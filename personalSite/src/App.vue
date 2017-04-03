@@ -10,7 +10,9 @@
       v-for="(page,index) in pages"
       @click="changePage(index)"
       >
+      <transition name="dot">
         <span v-show="page.show"></span>
+      </transition>
       </span>
       
     </div>
@@ -23,6 +25,7 @@ import homePage from './components/homePage'
 import personalInfo from './components/personalInfo'
 import projects from './components/projects'
 import PLZjob from './components/PLZjob'
+import Velocity from 'velocity-animate';
 export default {
   name: 'app',
   components : {homePage ,personalInfo ,projects ,PLZjob},
@@ -83,8 +86,9 @@ export default {
       for(var i = 0;i<this.pages.length;i++){
         this.pages[i].show = false;
       }
+      this.thisPage = index
       this.pages[index].show = true;
-    }
+    },
   }
 }
 </script>
@@ -97,6 +101,7 @@ html,body{
   padding:0;
   background :#ddd;
   #app{
+    overflow:hidden;
     width:100%;
     height:100%;
     position:relative;
@@ -111,6 +116,7 @@ html,body{
       bottom:0;
       border :1px solid #000;
       box-sizing:border-box;
+      box-shadow:1px 1px 6px #000;
     }
     .dots-box{
       width:30px;
@@ -149,4 +155,12 @@ html,body{
     }
   }
 }
+// 动画切换
+.dot-enter, .dot-leave-active {
+  transform:scale(0)
+}
+.dot-enter-active, .dot-leave-active {
+  transition:all 0.5s
+}
+
 </style>

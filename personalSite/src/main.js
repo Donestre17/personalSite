@@ -6,6 +6,7 @@ import router from './router'
 
 
 
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -15,3 +16,4 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
