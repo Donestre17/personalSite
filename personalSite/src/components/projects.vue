@@ -1,6 +1,5 @@
 <template>
     <div id="pjs" class="page"
-    v-show="show"
     :style="{'z-index':zIndex}"
     @mousemove="wave"></div>
 </template>
@@ -10,16 +9,48 @@
         props:['show'],
         data(){
             return {
-                zIndex:80
+                zIndex:80,
+                status:{
+                    switchFinish:true
+                },
             }
         },
         methods:{
             wave(ev){
+                if(!this.status.switchFinish)return
                 var width = this.$el.getBoundingClientRect().width;
                 var height =this.$el.getBoundingClientRect().height;
                 this.$el.style.transform = `
                         rotateX(${(ev.clientY - (height/2))*0.01}deg) rotateY(${-(ev.clientX - (width/2))*0.01}deg)
                 `;
+            }
+        },
+        watch:{
+            show(){
+                console.log(this.show);
+                var el = this.$el;
+                if(this.show == true){
+                    el.style.display = 'block';
+                    Velocity(el,{
+                        opacity:1,
+                        translateX:'0%'
+                    },{
+                        duration:500,
+                        complete(){
+                            that.status.switchFinish = true;
+                        }
+                    })
+                }else{
+                    Velocity(el,{
+                        opacity:0,
+                        translateX:'120%'
+                    },{
+                        duration:500,
+                        complete(){
+                            el.style.display = 'none';
+                        }
+                    });
+                }
             }
         }
     }
@@ -27,6 +58,7 @@
 
 <style lang="less" scoped>
     #pjs{
+        display:none;
         background:#a93434
     }
 </style>

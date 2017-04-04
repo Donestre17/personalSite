@@ -62,7 +62,7 @@ export default {
       this.timer = setTimeout(function(){
         that.canChange = true;
         clearTimeout(that.timer)
-      },1000)
+      },600)
       if(ev.deltaY>0){
         this.thisPage ++;
         if(this.thisPage >= this.pages.length - 1)this.thisPage = this.pages.length - 1;
@@ -114,7 +114,6 @@ html,body{
       left:0;
       right:0;
       bottom:0;
-      border :1px solid #000;
       box-sizing:border-box;
       box-shadow:1px 1px 6px #000;
     }
