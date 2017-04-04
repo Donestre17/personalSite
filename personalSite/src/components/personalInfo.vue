@@ -1,7 +1,8 @@
 <template>
     <div id="info" class="page"
     :style="{'z-index':zIndex}"
-    @mousemove="wave"></div>
+    @mousemove="wave">
+    </div>
 </template>
 
 <script>
@@ -29,6 +30,7 @@
             show(){
                 console.log(this.show);
                 var el = this.$el;
+                var that = this;
                 if(this.show == true){
                     el.style.display = 'block';
                     Velocity(el,{
@@ -59,6 +61,7 @@
 <style lang="less" scoped>
     #info{
         display:none;
-        background:greenyellow
+        background:url(../assets/infobg.gif);
+        position:relative;
     }
 </style>

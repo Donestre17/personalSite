@@ -62,7 +62,7 @@ export default {
       this.timer = setTimeout(function(){
         that.canChange = true;
         clearTimeout(that.timer)
-      },600)
+      },1000)
       if(ev.deltaY>0){
         this.thisPage ++;
         if(this.thisPage >= this.pages.length - 1)this.thisPage = this.pages.length - 1;
@@ -99,7 +99,8 @@ html,body{
   height:100%;
   margin:0;
   padding:0;
-  background :#ddd;
+  background :url(assets/3_lanrentuku.com.jpg.jpg);
+  background-size:cover;
   #app{
     overflow:hidden;
     width:100%;
@@ -119,29 +120,28 @@ html,body{
     }
     .dots-box{
       width:30px;
-      height:15%;
+      height:20%;
       z-index:1000;
       position:absolute;
       bottom :0;
       top:0;
-      right:5%;
+      right:1.5%;
       margin: auto;
       display:flex;
       flex-direction:column;
       justify-content:space-around;
-      align-content:center;
-      align-items:center;
+      align-content:flex-end;
+      align-items:flex-end;
       .dot {
-        width:15px;
-        height:15px;
-        border-radius:50%;
-        background:rgba(0,0,0,.5);
+        width:5px;
+        height:20%;
+        background:rgba(70,70,70,.5);
         position:relative;
+        cursor:pointer;
         span{
           display:block;
-          width:60%;
-          height:60%;
-          border-radius:50%;
+          width:100%;
+          height:100%;
           background:rgba(255,255,255,.9);
           position:absolute;
           top:0;

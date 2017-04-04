@@ -29,6 +29,7 @@
             show(){
                 console.log(this.show);
                 var el = this.$el;
+                var that = this;
                 if(this.show == true){
                     el.style.display = 'block';
                     Velocity(el,{
@@ -59,6 +60,6 @@
 <style lang="less" scoped>
     #pjs{
         display:none;
-        background:#a93434
+        background-image:url(../assets/5-120601093339.png);
     }
 </style>
