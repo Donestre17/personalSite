@@ -2,11 +2,14 @@
     <div id="info" class="page"
     :style="{'z-index':zIndex}"
     @mousemove="wave">
+        <infoCard></infoCard>
     </div>
 </template>
 
 <script>
+import infoCard from './info/infoCard'
     export default {
+        components:{infoCard},
         props:['show'],
         data(){
             return {
