@@ -3,19 +3,30 @@
     :style="{'z-index':zIndex}"
     @mousemove="wave">
         <div class="pr-mask">
-            <prCard v-for="item in projects" :pr="item"></prCard>
+            <prCard 
+            v-for="(item ,index) in projects" 
+            :pr="item"
+            :index="index"
+            @open="open(index)"
+            ></prCard>
+            <prInfo 
+            :show="infoShow"
+            :data="showPageData"
+            @closeIt="closeInfo"></prInfo>
         </div>
     </div>
 </template>
 
 <script>
 import prCard from './pr/prCard'
+import prInfo from './pr/prInfo'
     export default {
-        components:{prCard},
+        components:{prCard, prInfo},
         props:['show'],
         data(){
             return {
                 zIndex:80,
+                infoShow:false,
                 status:{
                     switchFinish:true
                 },
@@ -24,27 +35,36 @@ import prCard from './pr/prCard'
                         name:'xxxx',
                         detail:'xxxx',
                         src:'....',
-                        pic:'....'
+                        pic:'../assets/music.jpg',
+                        isChoose:false,
+                        info:'这是第一个项目'
                     },
                     {
                         name:'xxxx',
                         detail:'xxxx',
                         src:'....',
-                        pic:'....'
+                        pic:'....',
+                        isChoose:false,
+                        info:'这是第二个项目'
                     },
                     {
                         name:'xxxx',
                         detail:'xxxx',
                         src:'....',
-                        pic:'....'
+                        pic:'....',
+                        isChoose:false,
+                        info:'这是第三个项目'
                     },
                     {
                         name:'xxxx',
                         detail:'xxxx',
                         src:'....',
-                        pic:'....'
+                        pic:'....',
+                        isChoose:false,
+                        info:'这是第四个项目'
                     }
-                ]
+                ],
+                showPageData:null
             }
         },
         methods:{
@@ -55,6 +75,13 @@ import prCard from './pr/prCard'
                 this.$el.style.transform = `
                         rotateX(${(ev.clientY - (height/2))*0.01}deg) rotateY(${-(ev.clientX - (width/2))*0.01}deg)
                 `;
+            },
+            open(index){
+                this.infoShow = true;
+                this.showPageData = this.projects[index]
+            },
+            closeInfo(){
+                this.infoShow = false;
             }
         },
         watch:{
