@@ -2,7 +2,7 @@
     <div id="info" class="page"
     :style="{'z-index':zIndex}"
     @mousemove="wave">
-        <infoCard></infoCard>
+        <infoCard :show="show"></infoCard>
     </div>
 </template>
 

@@ -1,11 +1,17 @@
 <template>
     <div id="pjs" class="page"
     :style="{'z-index':zIndex}"
-    @mousemove="wave"></div>
+    @mousemove="wave">
+        <div class="pr-mask">
+            <prCard v-for="item in projects" :pr="item"></prCard>
+        </div>
+    </div>
 </template>
 
 <script>
+import prCard from './pr/prCard'
     export default {
+        components:{prCard},
         props:['show'],
         data(){
             return {
@@ -13,6 +19,32 @@
                 status:{
                     switchFinish:true
                 },
+                projects:[
+                    {
+                        name:'xxxx',
+                        detail:'xxxx',
+                        src:'....',
+                        pic:'....'
+                    },
+                    {
+                        name:'xxxx',
+                        detail:'xxxx',
+                        src:'....',
+                        pic:'....'
+                    },
+                    {
+                        name:'xxxx',
+                        detail:'xxxx',
+                        src:'....',
+                        pic:'....'
+                    },
+                    {
+                        name:'xxxx',
+                        detail:'xxxx',
+                        src:'....',
+                        pic:'....'
+                    }
+                ]
             }
         },
         methods:{
@@ -61,5 +93,23 @@
     #pjs{
         display:none;
         background-image:url(../assets/5-120601093339.png);
+        .pr-mask{
+            width:90%;
+            height:90%;
+            border:3px solid #fff;
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+            background:rgba(0,0,0,.3);
+            display:flex;
+            align-content:space-around;
+            align-items:center;
+            justify-content:space-around;
+            flex-wrap:wrap;
+            overflow:auto;
+        }
     }
 </style>
